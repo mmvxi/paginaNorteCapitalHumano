@@ -1,0 +1,185 @@
+/* --- RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    
+    background-image: url('../img/fondo-principal.png'); 
+    background-size: cover;
+    
+    /* CAMBIO 1: Volvemos a anclar la imagen abajo y al centro 
+       para que la maquinaria cubra toda la pantalla hasta el final */
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+    position: relative;
+    z-index: 1;
+}
+
+/* Creamos una capa oscura sobre el fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% de oscuridad */
+    z-index: -1;
+}
+
+/* --- ESTILO DE LOS BOTONES UNIFORMES --- */
+.btn-minimalist {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    background-color: #333333; /* Un gris charcoal oscuro y profesional para todos */
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px; /* Bordes muy redondeados como en el bosquejo */
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+/* Efecto hover profesional */
+.btn-minimalist:hover {
+    background-color: #555555; /* Un gris más claro al pasar el mouse */
+    transform: translateY(-2px); /* Un pequeño salto hacia arriba */
+}
+
+/* --- CABECERA (HEADER Y NAVEGACIÓN) --- */
+header {
+    width: 100%;
+    padding: 20px 5%; 
+}
+
+nav {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative; /* CLAVE: Permite que el logo se posicione de forma absoluta dentro de este contenedor */
+}
+
+/* Estilos para el contenedor del enlace del logo */
+.logo-nav-link {
+    position: absolute;
+    left: 0; /* Pega el logo exactamente al lado izquierdo del nav */
+    top: 50%; /* Estas dos líneas centran el logo verticalmente... */
+    transform: translateY(-50%); /* ...con respecto a los botones */
+}
+
+/* Estilos para la imagen del logo pequeño */
+.logo-nav {
+    width: 65px; /* Un tamaño sutil y elegante para el menú */
+    height: 65px;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 0.3s ease; /* Suave transición para el hover */
+}
+
+/* Efecto visual al pasar el mouse por el logo pequeño */
+.logo-nav:hover {
+    transform: scale(1.1); /* Crece ligeramente indicando que es clickeable */
+}
+
+/* El contenedor principal de la lista */
+nav ul {
+    display: flex;
+    justify-content: center; /* LA CLAVE: Centra absolutamente todos los elementos de la lista */
+    align-items: center;
+    gap: 30px; /* Crea el espacio entre el grupo de 3 botones y el botón de Contáctanos */
+    list-style: none;
+}
+
+/* Grupo de botones principales (Nosotros, Servicios, Metodología) */
+.nav-principals {
+    display: flex;
+    gap: 30px; /* Mantiene la misma separación de 30px entre los 3 primeros botones */
+}
+
+
+/* --- CONTENIDO PRINCIPAL (EL TEXTO CENTRAL) --- */
+main {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column; /* Apila el logo, el título y el párrafo verticalmente */
+    align-items: center;
+    margin-top: -80px    /* Los centra horizontalmente */
+}
+
+/* Estilos para el nuevo logo central */
+.logo-central {
+    width: 250px; /* Ajusta este valor para hacer el logo más grande o más pequeño */
+    height: auto;
+    object-fit: contain; /* Evita que la imagen se deforme al achicarla */
+    margin-bottom: 7px; /* Espacio entre el logo y el texto "Norte Capital Humano" */
+    border-radius: 50%; /* Opcional: si la imagen tiene fondo negro y quieres que sea un círculo perfecto */
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-top: 0; /* Muy grande como en el bosquejo */
+    margin-bottom: 15px;
+    color: #cca352;
+    font-family: 'Verdana', sans-serif;
+}
+
+.hero-text p {
+    font-size: 1.2rem; /* Un poco más pequeño */
+    font-weight: 300;
+    color: #8ab4f8;
+    font-style: italic;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+/* --- PIE DE PÁGINA (FOOTER CON EL LOGO Y TEXTO) --- */
+/* --- PIE DE PÁGINA (FOOTER) --- */
+footer {
+    width: 100%;
+    height: 120px; 
+    background-color: transparent; 
+    position: relative;
+    padding: 0 5%; 
+    display: flex;
+    justify-content: flex-start; /* esto mueve el texto a la izquierda */
+    align-items: center; 
+    /* Nota que aquí ya NO hay ninguna propiedad de background-image. 
+       Quedó totalmente limpio y transparente. */
+}
+
+/* Esta es la ÚNICA imagen que debe existir, la que puedes ajustar */
+
+
+
+/* Contenedor Flexbox para posicionar el texto de contacto a la derecha */
+.footer-contact-info {
+    display: flex;
+    justify-content: flex-end; /* Lo empuja a la derecha */
+    align-items: center; /* Centrado vertical */
+    height: 100%;
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.footer-contact-info a {
+    color: #ffffff;
+    text-decoration: none;
+}

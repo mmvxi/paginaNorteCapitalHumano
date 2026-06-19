@@ -1,8 +1,12 @@
 <?php include 'includes/header.php'; ?>
 
 <main>
-    <h1>Bienvenido a la página inicial</h1>
-    <p>Aquí va el contenido minimalista que tienes en tu plantilla.</p>
+    <div class="hero-text">
+        <img src="assets/img/logorecortado.png" alt="Logo NCH" class="logo-central">
+        
+        <h1>Norte Capital Humano</h1>
+        <p>Impulsando Talentos, Conectando Futuros</p>
+    </div>
 </main>
 
 <?php include 'includes/footer.php'; ?>

@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nombre de la Empresa</title>
+    <title>Norte Capital Humano</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
         <nav>
+            <a href="index.php" class="logo-nav-link">
+                <img src="assets/img/logorecortado.png" alt="Inicio" class="logo-nav">
+            </a>
+
             <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="nosotros.php">Nosotros</a></li>
-                <li><a href="servicios.php">Servicios</a></li>
-                <li><a href="metodologia.php">Metodología</a></li>
-                <li><a href="contacto.php">Contacto</a></li>
+                <li class="nav-principals">
+                    <a href="nosotros.php" class="btn-minimalist">Nosotros</a>
+                    <a href="servicios.php" class="btn-minimalist">Servicios</a>
+                    <a href="metodologia.php" class="btn-minimalist">Metodología</a>
+                </li>
+                <li>
+                    <a href="contacto.php" class="btn-minimalist">Contáctanos</a>
+                </li>
             </ul>
         </nav>
     </header>
