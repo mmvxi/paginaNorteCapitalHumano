@@ -1,21 +1,28 @@
-/* --- RESET BÁSICO --- */
+/* RESET BÁSICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth; /* Hace que la pantalla baje como mantequilla al presionar enlaces */
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     
-    background-image: url('../img/fondo-principal.png'); 
-    background-size: cover;
+    /* ELIMINAMOS EL COLOR Y VOLVEMOS A LA IMAGEN */
+    background-image: url('../img/fondo1.png'); /* IMAGEN DEL FONDO */
     
-    /* CAMBIO 1: Volvemos a anclar la imagen abajo y al centro 
-       para que la maquinaria cubra toda la pantalla hasta el final */
-    background-position: center bottom; 
-    background-repeat: no-repeat;
+    
+    background-size: cover; /* Fuerza a la imagen a cubrir toda la pantalla sin dejar espacios en blanco */
+    background-position: center center; /* Centra la imagen perfectamente */
+    background-repeat: no-repeat; /* Evita que la imagen se repita como un mosaico si la pantalla es muy grande */
+    
+    /* Un toque extra: esto hace que el fondo se quede quieto mientras el resto de la página baja al hacer scroll */
+    background-attachment: fixed; 
     
     display: flex;
     flex-direction: column;
@@ -25,7 +32,7 @@ body {
     z-index: 1;
 }
 
-/* Creamos una capa oscura sobre el fondo */
+/* Capa oscura sobre el fondo para mejorar el contraste */
 body::before {
     content: '';
     position: absolute;
@@ -33,82 +40,94 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 50% de oscuridad */
+    background-color: rgba(0, 0, 0, 0.4); /* 50% de oscuridad, PARA CAMBIAR CAMBIAR EL 0.5 */
     z-index: -1;
 }
 
-/* --- ESTILO DE LOS BOTONES UNIFORMES --- */
+/* ESTILO DE LOS BOTONES UNIFORMES */
 .btn-minimalist {
     display: inline-block;
     padding: 12px 30px;
     font-size: 1.1rem;
-    background-color: #333333; /* Un gris charcoal oscuro y profesional para todos */
+    background-color: #B3B3B3;
+    border: 2px solid #000000;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 50px; /* Bordes muy redondeados como en el bosquejo */
+    border-radius: 50px; 
     font-weight: bold;
     text-align: center;
-    transition: all 0.3s ease; /* Efecto suave al pasar el mouse */
+    transition: all 0.3s ease; /* efecto suave al pasar el mouse */
 }
 
-/* Efecto hover profesional */
+
 .btn-minimalist:hover {
-    background-color: #555555; /* Un gris más claro al pasar el mouse */
-    transform: translateY(-2px); /* Un pequeño salto hacia arriba */
+    background-color: #009FD4; /* Un gris más claro al pasar el mouse */
+    transform: translateY(-2px);
+    border-color: #009FD4; /* Un pequeño salto hacia arriba */
 }
 
-/* --- CABECERA (HEADER Y NAVEGACIÓN) --- */
+/* estado activo: cuando el usuario está en esa página */
+.btn-minimalist.activo {
+    background-color: #009FD4; 
+    border-color: #009FD4;
+}
+
+/*CABECERA (HEADER Y NAVEGACIÓN)*/
 header {
     width: 100%;
-    padding: 20px 5%; 
+    
+    /* Ajustamos el padding para definir el grosor de la barra (arriba/abajo 15px, lados 5%) */
+    padding: 25px 5%; 
+    background-color: #B3B3B3; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 nav {
     display: flex;
     justify-content: center; 
     align-items: center;
-    position: relative; /* CLAVE: Permite que el logo se posicione de forma absoluta dentro de este contenedor */
+    position: relative; 
 }
 
 /* Estilos para el contenedor del enlace del logo */
 .logo-nav-link {
     position: absolute;
-    left: 0; /* Pega el logo exactamente al lado izquierdo del nav */
-    top: 50%; /* Estas dos líneas centran el logo verticalmente... */
-    transform: translateY(-50%); /* ...con respecto a los botones */
+    left: 0; 
+    top: 50%; 
+    transform: translateY(-50%); 
 }
 
 /* Estilos para la imagen del logo pequeño */
 .logo-nav {
-    width: 65px; /* Un tamaño sutil y elegante para el menú */
+    width: 65px;
     height: 65px;
     object-fit: contain;
     border-radius: 50%;
-    transition: transform 0.3s ease; /* Suave transición para el hover */
+    transition: transform 0.3s ease; 
 }
 
 /* Efecto visual al pasar el mouse por el logo pequeño */
 .logo-nav:hover {
-    transform: scale(1.1); /* Crece ligeramente indicando que es clickeable */
+    transform: scale(1.1); 
 }
 
 /* El contenedor principal de la lista */
 nav ul {
     display: flex;
-    justify-content: center; /* LA CLAVE: Centra absolutamente todos los elementos de la lista */
+    justify-content: center; 
     align-items: center;
-    gap: 30px; /* Crea el espacio entre el grupo de 3 botones y el botón de Contáctanos */
+    gap: 30px; 
     list-style: none;
 }
 
 /* Grupo de botones principales (Nosotros, Servicios, Metodología) */
 .nav-principals {
     display: flex;
-    gap: 30px; /* Mantiene la misma separación de 30px entre los 3 primeros botones */
+    gap: 30px; 
 }
 
 
-/* --- CONTENIDO PRINCIPAL (EL TEXTO CENTRAL) --- */
+/* CONTENIDO PRINCIPAL (EL TEXTO CENTRAL) */
 main {
     flex-grow: 1; 
     display: flex;
@@ -120,25 +139,25 @@ main {
 .hero-text {
     max-width: 900px;
     display: flex;
-    flex-direction: column; /* Apila el logo, el título y el párrafo verticalmente */
+    flex-direction: column; /* Se alinea verticalmente */
     align-items: center;
-    margin-top: -80px    /* Los centra horizontalmente */
+    margin-top: -80px;   /* Los centra horizontalmente */
 }
 
 /* Estilos para el nuevo logo central */
 .logo-central {
-    width: 250px; /* Ajusta este valor para hacer el logo más grande o más pequeño */
+    width: 250px; /* valor para el logo más grande o más pequeño */
     height: auto;
-    object-fit: contain; /* Evita que la imagen se deforme al achicarla */
-    margin-bottom: 7px; /* Espacio entre el logo y el texto "Norte Capital Humano" */
-    border-radius: 50%; /* Opcional: si la imagen tiene fondo negro y quieres que sea un círculo perfecto */
+    object-fit: contain; 
+    margin-bottom: 7px; /* espacio entre el logo y el texto "Norte Capital Humano" */
+    border-radius: 50%; 
 }
 
 .hero-text h1 {
     font-size: 2.5rem;
-    margin-top: 0; /* Muy grande como en el bosquejo */
+    margin-top: 0; 
     margin-bottom: 15px;
-    color: #cca352;
+    color: #CE8946;
     font-family: 'Verdana', sans-serif;
 }
 
@@ -146,34 +165,49 @@ main {
     font-size: 1.2rem; /* Un poco más pequeño */
     font-weight: 300;
     color: #8ab4f8;
-    font-style: italic;
+    font-style: italic; /* CURSIVA */
     font-family: 'Trebuchet MS', sans-serif;
 }
 
-/* --- PIE DE PÁGINA (FOOTER CON EL LOGO Y TEXTO) --- */
-/* --- PIE DE PÁGINA (FOOTER) --- */
-footer {
-    width: 100%;
-    height: 120px; 
-    background-color: transparent; 
-    position: relative;
-    padding: 0 5%; 
-    display: flex;
-    justify-content: flex-start; /* esto mueve el texto a la izquierda */
-    align-items: center; 
-    /* Nota que aquí ya NO hay ninguna propiedad de background-image. 
-       Quedó totalmente limpio y transparente. */
+/*BOTÓN DE ACCIÓN CENTRAL*/
+.btn-accion-central {
+    display: inline-block;
+    margin-top: 35px; /* separacion de subtitulo */
+    padding: 15px 40px; 
+    font-size: 1.2rem;
+    background-color: #CE8946; /* color */
+    border: 2px solid #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease; 
 }
 
-/* Esta es la ÚNICA imagen que debe existir, la que puedes ajustar */
+/* al pasar el mouse se pone naranjo */
+.btn-accion-central:hover {
+    background-color: #DE8E10; /* color */
+    border-color: #DE8E10; 
+    transform: translateY(-2px); 
+}
 
+/*PIE DE PÁGINA (FOOTER)*/
+footer {
+    width: 100%;
+    height: 75px;
+    padding: 0px 5%; 
+    background-color: #B3B3B3; 
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.25);
+    position: relative;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+}
 
-
-/* Contenedor Flexbox para posicionar el texto de contacto a la derecha */
 .footer-contact-info {
     display: flex;
-    justify-content: flex-end; /* Lo empuja a la derecha */
-    align-items: center; /* Centrado vertical */
+    justify-content: flex-end; 
+    align-items: center; 
     height: 100%;
     font-size: 1.2rem;
     color: #ffffff;
@@ -182,4 +216,503 @@ footer {
 .footer-contact-info a {
     color: #ffffff;
     text-decoration: none;
+}
+
+/* SECCIÓN NOSOTROS */
+.main-nosotros {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Mantiene todo centrado verticalmente */
+    padding: 40px 5%; 
+}
+
+.nosotros-wrapper {
+    width: 100%;
+    max-width: 1000px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Separación exacta entre el título y los botones naranjos */
+    margin: 0 auto; 
+}
+
+.nosotros-header h1 {
+    font-size: 4.0rem; /* Tamaño grande para destacar */
+    color: #CE8946; /* Naranjo corporativo */
+    font-family: 'Verdana', sans-serif;
+    text-align: center;
+    /* -webkit-text-stroke: 0.8px #ffffff;  */
+}
+
+.nosotros-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    gap: 50px;  /* espacio entre el botón izquierdo y el derecho */
+}
+
+.columna-acordeon {
+    flex: 1; 
+}
+
+.acordeon-nch summary::marker,
+.acordeon-nch summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Estilo de los botones Naranjos */
+.btn-naranjo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #CE8946; /*color */
+    color: #ffffff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #000000;
+    border-radius: 50px; 
+    cursor: pointer;
+    list-style: none; 
+    transition: all 0.3s ease;
+}
+
+.btn-naranjo:hover {
+    background-color: #f39c12; /* color al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+/* animación de la flecha */
+.flecha {
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+}
+
+/* se gira la flecha */
+.acordeon-nch[open] .btn-naranjo .flecha {
+    transform: rotate(180deg);
+}
+
+/* Cuadro de texto que aparece al desplegar */
+.contenido-acordeon {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-left: 4px solid #DE8E10; /* color de linea*/
+    padding: 20px;
+    margin-top: 15px; 
+    border-radius: 0 10px 10px 0; 
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left; 
+}
+
+
+/* CONTENIDO ESPECÍFICO DE SERVICIOS */
+.servicios-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -20px; 
+}
+
+.servicios-card {
+    max-width: 850px;
+    padding: 40px 50px;
+    text-align: center;
+    background-color: rgba(206, 137, 70, 0.6); /* Fondo oscuro al 60% de opacidad, para cambiar cambiar el 0.6 */
+    backdrop-filter: blur(8px); /* desenfoque */
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 20px; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.servicios-card h1 {
+    font-size: 2.8rem;
+    color: #ffffff; 
+    margin-bottom: 20px;
+    font-family: 'Verdana', sans-serif;
+}
+
+.servicios-card p {
+    font-size: 1.3rem;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/*FLECHA ANIMADA*/
+.flecha-scroll {
+    margin-top: 40px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-bottom: 4px solid #DE8E10; /* color borde */
+    border-right: 4px solid #DE8E10; 
+    transform: rotate(45deg); 
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    animation: reboteFlecha 2s infinite; 
+}
+
+/* si pasas el mouse, la flecha se pone celeste */
+.flecha-scroll:hover {
+    border-color: #009FD4; 
+}
+
+/* Animación para hacer que rebote */
+@keyframes reboteFlecha {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    40% {
+        transform: translateY(-15px) rotate(45deg); /* Salta hacia arriba */
+    }
+    60% {
+        transform: translateY(-7px) rotate(45deg); /* Salto más pequeño */
+    }
+}
+
+/* CONFIGURACIÓN PARA VISTAS SEPARADAS */
+.main-servicios {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vista-inicial {
+    min-height: calc(100vh - 115px); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 5%;
+}
+
+.vista-secundaria {
+    
+    padding: 80px 5% 120px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* GRILLA DE 3 TARJETAS */
+.grilla-servicios {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espacio entre cada tarjeta */
+    width: 100%;
+    max-width: 1200px;
+}
+
+.tarjeta-servicio {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%; /* Cada tarjeta ocupa un tercio */
+    background-color: #CE8946; /* Color */
+    border: 2px solid #000000;
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tarjeta-servicio img {
+    width: 100%;
+    height: 220px; 
+    object-fit: cover; 
+    border-bottom: 2px solid #000000;
+    background-color: #4a4a4a; 
+}
+
+.titulo-servicio {
+    background-color: #CE8946; 
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #000000;
+}
+
+.texto-servicio {
+    padding: 20px 15px;
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+    flex-grow: 1; /* Hace que todas las tarjetas midan lo mismo sin importar la cantidad de texto */
+}
+
+/* CONFIGURACIÓN PARA METODOLOGÍA */
+.main-metodologia {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 5% 100px; 
+}
+
+.metodologia-wrapper {
+    width: 100%;
+    max-width: 1200px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px; 
+}
+
+.metodologia-header h1 {
+    font-size: 3rem;
+    color: #CE8946; 
+    font-family: 'Verdana', sans-serif;
+    /* -webkit-text-stroke: 2px #000000; */
+    text-align: center;
+}
+
+/* GRILLA DE 4 COLUMNAS */
+.grilla-metodologia {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    gap: 20px; 
+    width: 100%;
+}
+
+.acordeon-metodologia {
+    width: 25%; 
+    display: flex;
+    flex-direction: column;
+}
+
+
+.acordeon-metodologia summary::marker,
+.acordeon-metodologia summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Diseño del recuadro del título  */
+.titulo-metodologia {
+    background-color: #CE8946; /* color */
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 20px 15px;
+    border: 2px solid #000000;
+    border-radius: 15px; 
+    
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px; 
+}
+
+.titulo-metodologia:hover {
+    background-color: #f39c12; 
+    transform: translateY(-2px); 
+}
+
+.acordeon-metodologia[open] .titulo-metodologia {
+    border-radius: 15px 15px 0 0; 
+    transform: none; 
+}
+
+/* Diseño del cuadro de texto que aparece al clickear */
+.contenido-metodologia {
+    background-color: #9f6f4a; 
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-top: none; 
+    text-align: left;
+    border-radius: 0 0 15px 15px; 
+}
+
+/* CONFIGURACIÓN PARA CONTACTO */
+.main-contacto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 5%; 
+    flex-grow: 1; 
+}
+
+.contacto-card {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px 50px;
+    background-color: #CE8946; /* Color*/
+    border: 2px solid #000000; 
+    border-radius: 15px; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.formulario-flex {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/*  ESTILOS DE LOS CAMPOS (IZQUIERDA)*/
+.campos-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    width: 60%; 
+}
+
+.input-contacto {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #ffffff; 
+    border: 2px solid #000000; 
+    border-radius: 15px;
+    color: #000000; 
+    font-size: 1.1rem;
+    font-family: 'Segoe UI', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-contacto::placeholder {
+    color: #666666;
+    font-style: italic;
+}
+
+.input-contacto:focus {
+    border-color: #CE8946; 
+    box-shadow: 0 0 5px rgba(206, 137, 70, 0.5);
+}
+
+/* ESTILO DEL BOTÓN (DERECHA) */
+.boton-formulario {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-enviar {
+    width: 100%;
+    background-color: #CE8946; /* color */
+    color: #ffffff;
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid #000000; 
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-enviar:hover {
+    background-color: #f39c12; /* Brillo al pasar el mouse */
+    transform: translateY(-2px); 
+}
+
+/* ADAPTACIÓN PARA CELULARES Y TABLETS (MEDIA QUERIES) */
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    nav {
+        flex-direction: column; 
+    }
+
+    .logo-nav-link {
+        position: static; 
+        transform: none; 
+        margin-bottom: 20px; 
+        text-align: center;
+    }
+
+    nav ul, .nav-principals {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px; 
+    }
+
+    .btn-minimalist {
+        width: 100%; 
+        max-width: 300px; 
+    }
+
+    /* Contenido Principal*/
+    .hero-text {
+        margin-top: 20px; 
+        padding: 0 15px; 
+    }
+
+    .logo-central {
+        width: 180px; 
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem; 
+    }
+
+    .hero-text p {
+        font-size: 1.1rem; 
+    }
+
+    .btn-accion-central {
+        padding: 12px 30px;
+        font-size: 1rem;
+        margin-top: 25px;
+    }
+
+    .nosotros-container {
+        flex-direction: column; 
+        gap: 25px; 
+        margin-top: 20px;
+    }
+
+    .grilla-servicios {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .tarjeta-servicio {
+        width: 100%; 
+        max-width: 450px;
+    }
+    
+    /* Responsividad para Metodología */
+    .grilla-metodologia {
+        flex-direction: column; 
+        align-items: center;
+        gap: 15px;
+    }
+
+    .acordeon-metodologia {
+        width: 100%; 
+        max-width: 450px;
+    }
+
+    .titulo-metodologia {
+        min-height: auto; 
+    }
+
+    /* Responsividad para Contacto */
+    .formulario-flex {
+        flex-direction: column; 
+        gap: 30px;
+    }
+
+    .campos-formulario {
+        width: 100%; 
+    }
+
+    .boton-formulario {
+        width: 100%; 
+    }
 }

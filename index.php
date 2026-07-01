@@ -6,6 +6,8 @@
         
         <h1>Norte Capital Humano</h1>
         <p>Impulsando Talentos, Conectando Futuros</p>
+        
+        <a href="nosotros.php" class="btn-accion-central">Conócenos</a>
     </div>
 </main>
 
